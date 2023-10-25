@@ -82,7 +82,7 @@ public class AppBadgerPlugin implements FlutterPlugin, MethodCallHandler {
     // We can do nothing about it, we can not update badge since package does not support it
   }
 
-  public boolean areNotificationsEnabled() {
+  private boolean areNotificationsEnabled() {
     // Android 13 and above can disable notifications per channel
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
       NotificationManager manager = (NotificationManager) applicationContext.getSystemService(Context.NOTIFICATION_SERVICE);
