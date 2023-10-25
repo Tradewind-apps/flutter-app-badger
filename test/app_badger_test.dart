@@ -24,7 +24,7 @@ void main() {
   });
 
   test('isSupported', () async {
-    AppBadger appBadgerPlugin = AppBadger();
+    AppBadger appBadgerPlugin = const AppBadger();
     MockAppBadgerPlatform fakePlatform = MockAppBadgerPlatform();
     AppBadgerPlatform.instance = fakePlatform;
 

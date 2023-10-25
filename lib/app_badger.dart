@@ -1,6 +1,8 @@
 import 'app_badger_platform_interface.dart';
 
 class AppBadger {
+  const AppBadger();
+
   Future<void> updateCount(int count) {
     return AppBadgerPlatform.instance.updateCount(count);
   }

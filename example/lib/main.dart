@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool isSupported = false;
-  final _appBadgerPlugin = AppBadger();
+  final _appBadgerPlugin = const AppBadger();
   int count = 0;
 
   @override
@@ -32,7 +32,9 @@ class _MyAppState extends State<MyApp> {
     // We also handle the message potentially returning null.
     try {
       isSupported = await _appBadgerPlugin.isSupported();
-    } on PlatformException {}
+    } on PlatformException {
+      isSupported = false;
+    }
 
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
