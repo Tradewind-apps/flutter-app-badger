@@ -78,6 +78,10 @@ public class AppBadgerPlugin implements FlutterPlugin, MethodCallHandler {
   private void updateCount(int count) {
     if(isSupported()) {
       ShortcutBadger.applyCount(applicationContext, count);
+      return;
+    }
+    if(count == 0) {
+      removeCount();
     }
     // We can do nothing about it, we can not update badge since package does not support it
   }
