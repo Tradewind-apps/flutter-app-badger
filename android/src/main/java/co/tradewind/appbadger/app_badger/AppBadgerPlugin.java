@@ -83,7 +83,7 @@ public class AppBadgerPlugin implements FlutterPlugin, MethodCallHandler {
   }
 
   public boolean areNotificationsEnabled() {
-    // Android 123 and above can disable notifications per channel
+    // Android 13 and above can disable notifications per channel
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
       NotificationManager manager = (NotificationManager) applicationContext.getSystemService(Context.NOTIFICATION_SERVICE);
       if (!manager.areNotificationsEnabled()) {
