@@ -37,9 +37,10 @@ public class AppBadgerPlugin: NSObject, FlutterPlugin {
 }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    if(areNotificationsEnabled()) {
-      // Dont proceed further is notifications are disabled
-      result(nil);
+    if(!areNotificationsEnabled()) {
+        // Dont proceed further is notifications are disabled
+        result(nil);
+        return;
     }
 
     switch call.method {
