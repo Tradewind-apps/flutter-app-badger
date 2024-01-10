@@ -15,8 +15,15 @@ class MethodChannelAppBadger extends AppBadgerPlatform {
   }
 
   @override
-  Future<void> remove() async {
-    return methodChannel.invokeMethod('remove');
+  Future<void> remove({
+    bool cancelNotifications = false,
+  }) async {
+    return methodChannel.invokeMethod(
+      'remove',
+      {
+        'cancelNotifications': cancelNotifications,
+      },
+    );
   }
 
   @override

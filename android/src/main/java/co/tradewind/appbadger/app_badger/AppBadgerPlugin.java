@@ -49,7 +49,8 @@ public class AppBadgerPlugin implements FlutterPlugin, MethodCallHandler {
         result.success(null);
         break;
       case "remove":
-        removeCount();
+        final boolean cancelNotifications =  Boolean.parseBoolean(call.argument("cancelNotifications"));
+        removeCount(cancelNotifications);
         result.success(null);
         break;
       case "isSupported":
@@ -65,14 +66,16 @@ public class AppBadgerPlugin implements FlutterPlugin, MethodCallHandler {
     return ShortcutBadger.isBadgeCounterSupported(applicationContext);
   }
 
-  private void removeCount() {
+  private void removeCount(boolean cancelNotifications) {
     if(isSupported()) {
       ShortcutBadger.removeCount(applicationContext);
-      return;
     }
-    // In case of not supporting current platform, lets disable overall notifications badge via manager.
-    NotificationManager notificationManager = (NotificationManager) applicationContext.getSystemService(Context.NOTIFICATION_SERVICE);
-    notificationManager.cancelAll();
+    // If we want to cancel notifications
+    if(cancelNotifications) {
+      // In case of not supporting current platform, lets disable overall notifications badge via manager.
+      NotificationManager notificationManager = (NotificationManager) applicationContext.getSystemService(Context.NOTIFICATION_SERVICE);
+      notificationManager.cancelAll();
+    }
   }
 
   private void updateCount(int count) {
@@ -81,7 +84,7 @@ public class AppBadgerPlugin implements FlutterPlugin, MethodCallHandler {
       return;
     }
     if(count == 0) {
-      removeCount();
+      removeCount(false);
     }
     // We can do nothing about it, we can not update badge since package does not support it
   }
