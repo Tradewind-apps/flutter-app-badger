@@ -27,7 +27,10 @@ abstract class AppBadgerPlatform extends PlatformInterface {
     throw UnimplementedError('updateCount() has not been implemented.');
   }
 
-  Future<void> remove() {
+  /// [cancelNotifications] works only for Android - Will remove notifications from notification center
+  Future<void> remove({
+    bool cancelNotifications = false,
+  }) {
     throw UnimplementedError('removeBadge() has not been implemented.');
   }
 
