@@ -22,7 +22,7 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdk 34
+    compileSdk 33
     if (project.android.hasProperty("namespace")) {
         namespace 'co.tradewind.appbadger.app_badger'
     }
