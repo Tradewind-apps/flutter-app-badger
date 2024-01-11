@@ -7,8 +7,13 @@ class AppBadger {
     return AppBadgerPlatform.instance.updateCount(count);
   }
 
-  Future<void> remove() {
-    return AppBadgerPlatform.instance.remove();
+  /// [cancelNotifications] works only for Android - Will remove notifications from notification center
+  Future<void> remove({
+    bool cancelNotifications = false,
+  }) {
+    return AppBadgerPlatform.instance.remove(
+      cancelNotifications: cancelNotifications,
+    );
   }
 
   Future<bool> isSupported() {
