@@ -21,7 +21,7 @@ class MethodChannelAppBadger extends AppBadgerPlatform {
     return methodChannel.invokeMethod(
       'remove',
       {
-        'cancelNotifications': cancelNotifications,
+        'cancelNotifications': cancelNotifications.toString(),
       },
     );
   }

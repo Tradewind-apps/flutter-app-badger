@@ -11,7 +11,9 @@ class MockAppBadgerPlatform
   Future<bool> isSupported() => Future.value(true);
 
   @override
-  Future<void> remove() async {}
+  Future<void> remove({
+    bool cancelNotifications = false,
+  }) async {}
   @override
   Future<void> updateCount(int count) async {}
 }
